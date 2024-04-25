@@ -22,8 +22,8 @@ const ChatComponent = () => {
         },
         {
           headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer `,
+            'Content-Type': 'application/json'
+            
           },
         }
       );
