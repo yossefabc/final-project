@@ -1,16 +1,16 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: top;
-}
+} */
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
+} */
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
@@ -33,18 +33,42 @@
   }
 }
 
-.card {
+/* .card {
   padding: 2em;
-}
+} */
 
 /* .read-the-docs {
   color: #888;
 } */
 
-ul{
-  list-style-type: none;
-}
+
 .fontawesome a{
   font-size: 3rem;
 }
 
+
+
+
+
+
+.firstnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Optional: Align items vertically */
+  background-color: #041628;
+}
+
+.firstnav ul {
+  display: flex;
+  list-style-type: none; /* Remove default bullet points */
+}
+
+.firstnav li {
+  padding-right: 7vh;
+}
+
+/* Optional: Adjust link styles */
+.firstnav a {
+  text-decoration: none; /* Remove default underline */
+ 
+}

@@ -1,8 +1,13 @@
 import React from 'react';
+import ChatComponent from './ChatComponent';
 
 function WorkoutPlans() {
+  
   return (
+    
+<>
     <section id="workout">
+      
       <h2>Workout Plans</h2>
       <div>
         <h3>Cardio Workout</h3>
@@ -22,7 +27,10 @@ function WorkoutPlans() {
         <p>Intensity: Low</p>
         <p>Target: Improve flexibility and mobility</p>
       </div>
+      
     </section>
+    <ChatComponent/>
+    </>
   );
 }
 

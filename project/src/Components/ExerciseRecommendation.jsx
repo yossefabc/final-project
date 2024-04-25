@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const ExerciseRecommendation = () => {
+  
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
@@ -8,6 +9,7 @@ const ExerciseRecommendation = () => {
 
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
+    
   };
 
   const handleHeightChange = (e) => {
@@ -80,6 +82,7 @@ const ExerciseRecommendation = () => {
           ))}
         </ul>
       </div>
+      
     </div>
   );
 };
