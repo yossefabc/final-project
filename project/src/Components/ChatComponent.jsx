@@ -23,7 +23,7 @@ const ChatComponent = () => {
         {
           headers: {
             'Content-Type': 'application/json',
-            // Authorization: `Bearer sk-proj-jHeJDuvFdXoEBs5DVLvHT3BlbkFJOCc4TwB6lpSk2oUklhFW`,
+            Authorization: `Bearer `,
           },
         }
       );
