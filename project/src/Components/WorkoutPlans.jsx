@@ -29,7 +29,7 @@ function WorkoutPlans() {
       </div>
       
     </section>
-    <ChatComponent/>
+    {/* <ChatComponent/> */}
     </>
   );
 }
