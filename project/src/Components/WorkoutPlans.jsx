@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatComponent from './ChatComponent';
+
 
 function WorkoutPlans() {
   
@@ -29,7 +29,7 @@ function WorkoutPlans() {
       </div>
       
     </section>
-    {/* <ChatComponent/> */}
+    
     </>
   );
 }
