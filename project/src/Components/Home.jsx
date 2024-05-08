@@ -6,7 +6,8 @@ import {faTiktok} from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import image from './Images/image.mp4';
-import ExerciseRecommendation from "./ExerciseRecommendation";
+import RegistrationForm from "./RegistrationForm";
+import SignUp from "./SignUp";
 
 
 function Home(){
@@ -57,19 +58,20 @@ function Home(){
                 </button>
         </div>
         <hr></hr>
-        
+        <div className="register">
+        <h1 style={{color:"red"}}>stay in Touch</h1>
+        <RegistrationForm/>
+        </div>
        <div className="footer">
+        
+       
         <div className="fontawesome" >
             <h1>social</h1>
                <a href="https://www.facebook.com">  <FontAwesomeIcon icon={faFacebook}/></a>
                 <a href="//www.instagram.com/"> <FontAwesomeIcon icon= {faInstagram} /></a>
                 <a href="https://www.tiktok.com/explore">  <FontAwesomeIcon icon= {faTiktok} /></a>
             </div>
-            <div className="contact">
-                <h1>contact</h1>
-                <h3>E-mail</h3>
-                <a href="">info@GYMTRACK.com</a>
-            </div>
+           
             </div>
        
             </div>

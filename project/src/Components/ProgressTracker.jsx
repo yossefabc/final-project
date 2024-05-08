@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ProgressTracker() {
+  // Retrieve tasks from localStorage or initialize as an empty array
+  const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
   const [completedTasks, setCompletedTasks] = useState(0);
   const [taskName, setTaskName] = useState('');
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(initialTasks);
 
   const totalTasks = tasks.length;
+
+  // Save tasks to localStorage whenever tasks state changes
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
 
   const handleTaskCompletion = () => {
     if (completedTasks < totalTasks) {
@@ -19,6 +26,12 @@ function ProgressTracker() {
       setTasks([...tasks, taskName]);
       setTaskName('');
     }
+  };
+
+  const handleDeleteTask = (index) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
   };
 
   return (
@@ -37,7 +50,10 @@ function ProgressTracker() {
 
       <ul>
         {tasks.map((task, index) => (
-          <li key={index}>{task}</li>
+          <li key={index}>
+            {task}
+            <button onClick={() => handleDeleteTask(index)}>Delete</button>
+          </li>
         ))}
       </ul>
     </section>
@@ -45,4 +61,6 @@ function ProgressTracker() {
 }
 
 export default ProgressTracker;
+
+
 

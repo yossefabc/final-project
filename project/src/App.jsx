@@ -13,15 +13,16 @@ import {faChartColumn} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Home from './Components/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ChatComponent from './Components/ChatComponent';
+
 
 function App() {
-  
-
-  return (
-    
+  return(
     <>
-   
+    
+ 
+ 
+ 
+ 
         
         
      <nav className='firstnav'>

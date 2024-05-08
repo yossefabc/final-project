@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ChatComponent from './ChatComponent';
 
 const ExerciseRecommendation = () => {
   
