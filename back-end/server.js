@@ -1,23 +1,23 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const {db} = require('./config/db.js');
 const app = express();
-const router = express.Router();
-const {db} = require('./config/db');
-const { Pool } = require('pg');
+// const router = express.Router();
+// const { Pool } = require('pg');
 
 
-const pool = new Pool({
-    connectionString: 'postgres://ayqnxnbt:lW5P8Ssn8TQ6FK1UnBw3ybfn6QP19-pd@ziggy.db.elephantsql.com/ayqnxnbt',
-  });
-// Connection between database and Node.js application
-pool.connect((err, client, done) => {
-    if (err) {
-      console.error('Error connecting to the database', err);
-    } else {
-      console.log('Connected to the database');
-    }
-  });  
+// const pool = new Pool({
+//     connectionString: 'postgres://ayqnxnbt:lW5P8Ssn8TQ6FK1UnBw3ybfn6QP19-pd@ziggy.db.elephantsql.com/ayqnxnbt',
+//   });
+// // Connection between database and Node.js application
+// pool.connect((err, client, done) => {
+//     if (err) {
+//       console.error('Error connecting to the database', err);
+//     } else {
+//       console.log('Connected to the database');
+//     }
+//   });  
 
 
 
