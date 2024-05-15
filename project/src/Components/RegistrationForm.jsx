@@ -21,7 +21,7 @@ function RegistrationForm() {
     e.preventDefault();
     try {
         console.log("Submitting form data:", formData);
-      const response = await fetch('http://localhost:3000/exercise', {
+      const response = await fetch('https://final-project-backend-0g8d.onrender.com/exercise', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
