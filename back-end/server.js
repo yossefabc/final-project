@@ -3,21 +3,27 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const app = express();
 const router = express.Router();
-const knex = require('knex');
+const {db} = require('./config/db');
+const path=require('path');
+const { Pool } = require('pg');
 
+
+const pool = new Pool({
+    connectionString: 'postgres://ayqnxnbt:lW5P8Ssn8TQ6FK1UnBw3ybfn6QP19-pd@ziggy.db.elephantsql.com/ayqnxnbt',
+  });
 // Connection between database and Node.js application
-const db = knex({
-    client: 'pg',
-    connection: {
-        host: 'localhost',
-        port: 5433,
-        user: 'postgres',
-        database: 'dvdrental',
-        password: 'yossef123',
+pool.connect((err, client, done) => {
+    if (err) {
+      console.error('Error connecting to the database', err);
+    } else {
+      console.log('Connected to the database');
     }
-});
+  });  
 
-// Middleware
+
+
+
+// Middleware , modify and  perform tasks based on the request data.
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors()); // Enable CORS

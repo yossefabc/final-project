@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ChatComponent from './ChatComponent';
+
 
 const ExerciseRecommendation = () => {
   
@@ -33,7 +33,7 @@ const ExerciseRecommendation = () => {
         setExerciseRecommendations(['High-intensity interval training (HIIT)', 'Running', 'CrossFit']);
       }
     } else {
-      // Adjust exercise recommendations for older individuals
+      // exercise recommendations for older people(over 30)
       if (weight >= 100 && height >= 160) {
         setExerciseRecommendations(['Low-intensity cardio', 'Walking', 'Swimming']);
       } else if (50<weight < 100 && height <= 160) {

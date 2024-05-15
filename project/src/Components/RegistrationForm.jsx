@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 function RegistrationForm() {
+  // holds the form data entered by the user.
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -8,13 +9,14 @@ function RegistrationForm() {
     username: '',
     password: ''
   });
-
+  // This function is called whenever there is a change in any of the input fields.
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(`Updating form state: ${name} - ${value}`);
     setFormData({ ...formData, [name]: value });
   };
-
+  // This function is called when the user submits the form.
+  // and sends a POST request to the backend server using the fetch API
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {

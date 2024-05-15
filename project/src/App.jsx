@@ -1,4 +1,4 @@
-import UserProfile from './Components/UserProfile'
+
 import './App.css'
 
 import React from 'react';
@@ -26,7 +26,7 @@ function App() {
         
         
      <nav className='firstnav'>
-      <h1 style={{paddingRight:"30px",color:"red"}}> <FontAwesomeIcon icon={faChartColumn}  style={{paddingRight:"30px"}}/>GYMTRACK</h1>
+      <h1 style={{paddingRight:"3vh",color:"red"}}> <FontAwesomeIcon icon={faChartColumn}  style={{paddingRight:"3vh"}}/>GYMTRACK</h1>
     
       <ul >
           <li  style={{paddingRight:"7vh"}}>

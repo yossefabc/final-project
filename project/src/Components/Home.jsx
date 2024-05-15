@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import image from './Images/image.mp4';
 import RegistrationForm from "./RegistrationForm";
-import SignUp from "./SignUp";
+
 
 
 function Home(){
@@ -34,7 +34,7 @@ function Home(){
           <h2>With us you can create your own workout plans.<br></br>
           or choose a workout plan we made for you<br></br> based on your height,weight and age</h2>
           </div>
-          <img src="https://static.vecteezy.com/system/resources/previews/010/941/449/non_2x/workout-exercise-cartoon-icon-illustration-sport-healthy-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg" height={"300px"}></img>
+          <img src="https://static.vecteezy.com/system/resources/previews/010/941/449/non_2x/workout-exercise-cartoon-icon-illustration-sport-healthy-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg" height={"300vh"}></img>
           
         </div>
         <hr></hr>
@@ -43,7 +43,7 @@ function Home(){
           <h1><Link to="/NutritionSection">Nutrition</Link></h1>
           <h2>its well known that Nutrition is a major key to your goal, <br></br>and that why we creat a page that describe exactly what do you need to eat and when</h2>
           </div>
-          <img src="https://img.freepik.com/vecteurs-premium/conception-graphique-concept-infographique-macronutriments-nutrition-fibres-glucides-proteines-alimentaires_133260-5048.jpg?w=360" height={"300px"}></img>
+          <img src="https://img.freepik.com/vecteurs-premium/conception-graphique-concept-infographique-macronutriments-nutrition-fibres-glucides-proteines-alimentaires_133260-5048.jpg?w=360" height={"300vh"}></img>
         </div>
         <hr></hr>
         <div className="four">
