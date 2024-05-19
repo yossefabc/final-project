@@ -1,32 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-function NutritionSection() {
+const NutritionSection = ({ userId, weight, height, age }) => {
+  const [nutrition, setNutrition] = useState(null);
+
+  useEffect(() => {
+    const fetchNutrition = async () => {
+      try {
+        console.log('Fetching nutrition data for userId:', userId);
+        const response = await axios.post('http://localhost:3000/api/exercise-recommendations', {
+          userId,
+          weight,
+          height,
+          age
+        });
+        setNutrition(response.data.nutrition);
+      } catch (error) {
+        console.error('Error fetching nutrition data:', error);
+      }
+    };
+
+    if (userId) {
+      fetchNutrition();
+    }
+  }, [userId, weight, height, age]);
+
+  if (!nutrition) return <div>Loading...</div>;
+
   return (
-    <section id="nutrition">
-      <h2>Nutrition</h2>
-      <div>
-        <h3>Breakfast</h3>
-        <p>Calories: 350</p>
-        <p>Protein: 15g</p>
-        <p>Carbs: 45g</p>
-        <p>Fat: 10g</p>
-      </div>
-      <div>
-        <h3>Lunch</h3>
-        <p>Calories: 500</p>
-        <p>Protein: 20g</p>
-        <p>Carbs: 60g</p>
-        <p>Fat: 15g</p>
-      </div>
-      <div>
-        <h3>Dinner</h3>
-        <p>Calories: 600</p>
-        <p>Protein: 25g</p>
-        <p>Carbs: 70g</p>
-        <p>Fat: 20g</p>
-      </div>
+    <section>
+      <h2>Nutritional Suggestions</h2>
+      <p>Calories: {nutrition.calories}</p>
+      <p>Protein: {nutrition.protein}g</p>
+      <p>Carbs: {nutrition.carbs}g</p>
+      <p>Fat: {nutrition.fat}g</p>
     </section>
   );
-}
+};
 
 export default NutritionSection;
+
+

@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const ExerciseRecommendation = () => {
-  
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [age, setAge] = useState('');
   const [exerciseRecommendations, setExerciseRecommendations] = useState([]);
+  const [nutrition, setNutrition] = useState(null);
 
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
-    
   };
 
   const handleHeightChange = (e) => {
@@ -21,26 +20,45 @@ const ExerciseRecommendation = () => {
     setAge(e.target.value);
   };
 
-  const handleExerciseRecommendation = () => {
-    // Define exercise recommendation logic based on weight, height, and age
-    if (age <= 30) {
-      // Consider age as a factor for intensity or type of exercise
-      if (100<weight <= 150 && 160<height < 190) {
-        setExerciseRecommendations(['Low-intensity cardio', 'Walking', 'Swimming']);
-      } else if (50<weight <= 100 && 150<height <= 180) {
-        setExerciseRecommendations(['Strength training', 'Cycling', 'Yoga']);
+  const handleExerciseRecommendation = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/api/exercise-recommendations', {
+        weight: weight,
+        height: height,
+        age: age
+      });
+
+      const { nutrition } = response.data;
+      setNutrition(nutrition);
+
+      console.log(`Received data - Weight: ${weight}, Height: ${height}, Age: ${age}`);
+      console.log('Nutrition:', nutrition);
+
+      let recommendations = [];
+
+      // Simplified logic for debugging
+      if (age <= 30) {
+        if (weight > 100 && weight <= 150 && height > 160 && height < 190) {
+          recommendations = ['Low-intensity cardio', 'Walking', 'Swimming'];
+        } else if (weight > 50 && weight <= 100 && height > 150 && height <= 180) {
+          recommendations = ['Strength training', 'Cycling', 'Yoga'];
+        } else {
+          recommendations = ['High-intensity interval training (HIIT)', 'Running', 'CrossFit'];
+        }
       } else {
-        setExerciseRecommendations(['High-intensity interval training (HIIT)', 'Running', 'CrossFit']);
+        if (weight >= 100 && height >= 160) {
+          recommendations = ['Low-intensity cardio', 'Walking', 'Swimming'];
+        } else if (weight > 50 && weight < 100 && height <= 160) {
+          recommendations = ['Light weight training', 'Stretching', 'Tai Chi'];
+        } else {
+          recommendations = ['Moderate-intensity cardio', 'Hiking', 'Pilates'];
+        }
       }
-    } else {
-      // exercise recommendations for older people(over 30)
-      if (weight >= 100 && height >= 160) {
-        setExerciseRecommendations(['Low-intensity cardio', 'Walking', 'Swimming']);
-      } else if (50<weight < 100 && height <= 160) {
-        setExerciseRecommendations(['Light weight training', 'Stretching', 'Tai Chi']);
-      } else {
-        setExerciseRecommendations(['Moderate-intensity cardio', 'Hiking', 'Pilates']);
-      }
+
+      console.log('Exercise Recommendations:', recommendations);
+      setExerciseRecommendations(recommendations);
+    } catch (error) {
+      console.error('Error fetching exercise recommendations:', error);
     }
   };
 
@@ -83,9 +101,21 @@ const ExerciseRecommendation = () => {
           ))}
         </ul>
       </div>
-      
+      {nutrition && (
+        <div>
+          <h3>Nutritional Suggestions:</h3>
+          <p>Calories: {nutrition.calories}</p>
+          <p>Protein: {nutrition.protein}g</p>
+          <p>Carbs: {nutrition.carbs}g</p>
+          <p>Fat: {nutrition.fat}g</p>
+        </div>
+      )}
     </div>
   );
 };
 
 export default ExerciseRecommendation;
+
+
+
+

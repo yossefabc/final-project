@@ -1,6 +1,6 @@
 
 import './App.css'
-
+import { useState } from 'react';
 import React from 'react';
 import { BrowserRouter as Router, Route,Link,  Routes } from 'react-router-dom';
 
@@ -16,6 +16,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+
+  const [userId, setUserId] = useState(''); // Initialize userId state
+
+  // Function to handle userId changes
+  const handleUserIdChange = (event) => {
+    setUserId(event.target.value); // Update userId state when input changes
+  };
   return(
     <>
     
@@ -54,10 +61,10 @@ function App() {
      
        <Routes>
           
-          <Route path='/home' element={<Home/>} />
+          <Route path='/home' element={<Home handleUserIdChange={handleUserIdChange}/>} />
           <Route path="/exercise" element={<ExerciseRecommendation/>} />
           <Route path='/progresstracker' element={<ProgressTracker/>} />
-          <Route path='/nutritionSection' element={<NutritionSection/>} />
+          <Route path='/nutritionSection' element={<NutritionSection userId={userId}/>} />
           <Route path='/workoutPlans' element={<WorkoutPlans/>} />
           </Routes>
       </div>

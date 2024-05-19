@@ -10,7 +10,10 @@ import RegistrationForm from "./RegistrationForm";
 
 
 
-function Home(){
+function Home({ handleUserIdChange }){
+  const onUserIdSubmit = (id) => {
+    handleUserIdChange(id);
+  };
     return(
         
         <div>
@@ -21,7 +24,7 @@ function Home(){
         </div>
         <div className="container">
         <div className='body' style={{color:"black"}}>
-        <h1 >Take a touraa </h1>
+        <h1 >Take a tour </h1>
           <h2 >Track Your Gym and Cardio Workouts</h2>
           <h2 >this site is a workout tracking tool that <br></br>helps you track your gym and cardio workouts,<br></br>
           It's really easy. You can also track your bodyweight <br></br>and add notes on both gym and cardio workouts
@@ -60,7 +63,7 @@ function Home(){
         <hr></hr>
         <div className="register">
         <h1 style={{color:"red"}}>stay in Touch</h1>
-        <RegistrationForm/>
+        <RegistrationForm onUserIdSubmit={onUserIdSubmit}  />
         </div>
        <div className="footer">
         
