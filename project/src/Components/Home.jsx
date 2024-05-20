@@ -64,6 +64,7 @@ function Home({ handleUserIdChange }){
         <div className="register">
         <h1 style={{color:"red"}}>stay in Touch</h1>
         <RegistrationForm onUserIdSubmit={onUserIdSubmit}  />
+    
         </div>
        <div className="footer">
         

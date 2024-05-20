@@ -1,3 +1,4 @@
+
 const express = require('express');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -54,16 +55,46 @@ app.post('/api/exercise-recommendations', async (req, res) => {
     }
 });
 
-app.listen(process.env.PORT || 3000, () => {
+
+app.post('/api/progress', async (req, res) => {
+    const { userId, date, weight, dietAdherence, notes } = req.body;
+  
+    // Check if required fields are present
+    if (!userId || !date || !weight || !dietAdherence) {
+      return res.status(400).json({ error: 'All fields are required' });
+    }
+  
+    try {
+      // Insert progress data into the database
+      await db('progress').insert({
+        user_id: userId, // Use userId provided in the request body
+        date,
+        weight,
+        diet_adherence: dietAdherence,
+        notes
+      });
+  
+      res.status(201).json({ message: 'Progress saved successfully' });
+    } catch (error) {
+      console.error('Error saving progress:', error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  app.listen(process.env.PORT || 3000, () => {
     console.log("Server is running on port 3000");
 });
-
-
-
-
-
-
-
-
-  
-  

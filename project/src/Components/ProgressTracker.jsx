@@ -1,66 +1,90 @@
-import React, { useState, useEffect } from 'react';
 
-function ProgressTracker() {
-  // Retrieve tasks from localStorage or initialize as an empty array
-  const initialTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  const [completedTasks, setCompletedTasks] = useState(0);
-  const [taskName, setTaskName] = useState('');
-  const [tasks, setTasks] = useState(initialTasks);
+import React, { useState } from 'react';
+import axios from 'axios';
 
-  const totalTasks = tasks.length;
+const ProgressTracker = () => {
+  const [date, setDate] = useState('');
+  const [weight, setWeight] = useState('');
+  const [dietAdherence, setDietAdherence] = useState('');
+  const [notes, setNotes] = useState('');
+  const [message, setMessage] = useState('');
 
-  // Save tasks to localStorage whenever tasks state changes
-  useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
-
-  const handleTaskCompletion = () => {
-    if (completedTasks < totalTasks) {
-      setCompletedTasks(completedTasks + 1);
-    }
-  };
-
-  const handleAddTask = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (taskName.trim() !== '') {
-      setTasks([...tasks, taskName]);
-      setTaskName('');
+    try {
+      const response = await axios.post('http://localhost:3000/api/progress', {
+        date,
+        weight,
+        dietAdherence,
+        notes
+      });
+      setMessage('Progress saved successfully');
+      setDate('');
+      setWeight('');
+      setDietAdherence('');
+      setNotes('');
+    } catch (error) {
+      console.error('Error saving progress:', error);
+      setMessage('Error saving progress');
     }
-  };
-
-  const handleDeleteTask = (index) => {
-    const newTasks = [...tasks];
-    newTasks.splice(index, 1);
-    setTasks(newTasks);
   };
 
   return (
-    <section id="progress">
-      <h2>Progress Tracker</h2>
-      <p>Completed tasks: {completedTasks} / {totalTasks}</p>
-      <button onClick={handleTaskCompletion}>Complete Task</button>
-
-      <form onSubmit={handleAddTask}>
-        <label>
-          Task Name:
-          <input type="text" value={taskName} onChange={(e) => setTaskName(e.target.value)} />
-        </label>
-        <button type="submit">Add Task</button>
-      </form>
-
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>
-            {task}
-            <button onClick={() => handleDeleteTask(index)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <form onSubmit={handleSubmit}>
+      <h2>Track Your Progress</h2>
+      <div>
+        <label htmlFor="date">Date:</label>
+        <input
+          type="date"
+          id="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="weight">Weight (kg):</label>
+        <input
+          type="number"
+          id="weight"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="dietAdherence">Did you follow the diet today?</label>
+        <input
+          type="text"
+          id="dietAdherence"
+          value={dietAdherence}
+          onChange={(e) => setDietAdherence(e.target.value)}
+          required
+        />
+      </div>
+      <div>
+        <label htmlFor="notes">Notes:</label>
+        <textarea
+          id="notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+        />
+      </div>
+      <button type="submit">Save Progress</button>
+      {message && <p>{message}</p>}
+    </form>
   );
-}
+};
 
 export default ProgressTracker;
+
+
+
+
+
+
+
+
 
 
 

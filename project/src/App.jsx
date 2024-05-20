@@ -16,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
+  
 
   const [userId, setUserId] = useState(''); // Initialize userId state
 
@@ -63,7 +64,7 @@ function App() {
           
           <Route path='/home' element={<Home handleUserIdChange={handleUserIdChange}/>} />
           <Route path="/exercise" element={<ExerciseRecommendation/>} />
-          <Route path='/progresstracker' element={<ProgressTracker/>} />
+          <Route path='/progresstracker' element={<ProgressTracker userId={userId} />} />
           <Route path='/nutritionSection' element={<NutritionSection userId={userId}/>} />
           <Route path='/workoutPlans' element={<WorkoutPlans/>} />
           </Routes>
@@ -79,3 +80,9 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+
