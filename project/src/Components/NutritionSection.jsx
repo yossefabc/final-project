@@ -12,7 +12,7 @@ const NutritionSection = ({ userId, weight, height, age }) => {
     const fetchNutrition = async () => {
       try {
         console.log('Fetching nutrition data for userId:', userId);
-        const response = await axios.post('http://localhost:3000/api/exercise-recommendations', {
+        const response = await axios.post('https://final-project-backend-0g8d.onrender.com/api/exercise-recommendations', {
          userId,
           weight,
           height,

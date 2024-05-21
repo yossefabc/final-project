@@ -12,7 +12,7 @@ const ProgressTracker = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/progress', {
+      const response = await axios.post('https://final-project-backend-0g8d.onrender.com/api/progress', {
         date,
         weight,
         dietAdherence,

@@ -22,7 +22,7 @@ const ExerciseRecommendation = () => {
 
   const handleExerciseRecommendation = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/exercise-recommendations', {
+      const response = await axios.post('https://final-project-backend-0g8d.onrender.com/api/exercise-recommendations', {
         weight: weight,
         height: height,
         age: age

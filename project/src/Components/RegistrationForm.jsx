@@ -31,7 +31,7 @@ function RegistrationForm() {
       if (response.ok) {
         // Handle successful registration, e.g., redirect to another page
         console.log('Registration successful');
-        window.location.href = '/home';
+        window.location.href = '/';
       } else {
         // Handle registration error
         console.error('Registration failed');
