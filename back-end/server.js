@@ -130,7 +130,7 @@ app.post('/exercise', async (req, res) => {
     }
 });
 
-app.post('/api/exercise-recommendations', async (req, res) => {
+app.post('/api/exercise', async (req, res) => {
     const { weight, height, age } = req.body;
     console.log('Received data:', { weight, height, age });
     try {
@@ -148,7 +148,7 @@ app.post('/api/exercise-recommendations', async (req, res) => {
     }
 });
 
-app.post('/api/progress', async (req, res) => {
+app.post('/api/progresstracker', async (req, res) => {
   const { date, weight, dietAdherence, notes } = req.body;
 
   console.log('Received progress data:', req.body);

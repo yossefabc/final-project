@@ -109,7 +109,7 @@ const ProgressTracker = () => {
 
       console.log('Sending payload:', payload);
 
-      const response = await axios.post('https://final-project-backend-0g8d.onrender.com/api/progress', payload);
+      const response = await axios.post('https://final-project-backend-0g8d.onrender.com/api/progresstracker', payload);
       
       console.log('Server response:', response);
 
